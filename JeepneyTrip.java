@@ -5,7 +5,28 @@ class JeepneyTrip {
   
   // constants
   final int BASE_KM = 5;
+  final double EXCESS_FARE = 0.5;
+  final int BASE_FARE = 7;
+  final int DISCOUNT_FARE = 6;
   
+  public static double excessDistance(double distance) {
+  if (distance <= BASE_KM) {
+    return 0;
+  } else {
+    return distance - BASE_KM;
+  }
+}
+  
+
+  public static double computeFare(int passengersPassengers, double fare, double distance) {
+  return passengers * (fare + (excessDistance(distance) * EXCESS_FARE)) ;
+}
+  
+  public static double totalFare(int totalPassengers, int discountPassengers, double distance) {
+  return computeFare(total - discount, FARE_BASE, distance)
+    + computeFare(discount, FARE_DISCOUNT, distance);
+}
+
   
   JeepneyTrip(double distance, int totalPassengers, int discountPassengers) {
     this.distance = distance;
@@ -13,7 +34,8 @@ class JeepneyTrip {
     this.discountPassengers = discountPassengers;
   }
   
-  double fareChange(double payment) {
-    return 0;
+  
+  double fareChange(double payment, int totalPassengers, int discountPassengers, double distance) {
+    return payment - totalFare(totalPassengers, discountPassengers, distance);
   }
 }
