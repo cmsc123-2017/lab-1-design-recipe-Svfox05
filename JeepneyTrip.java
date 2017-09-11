@@ -26,7 +26,13 @@ class JeepneyTrip {
   return computeFare(total - discount, FARE_BASE, distance)
     + computeFare(discount, FARE_DISCOUNT, distance);
 }
-
+   public static int assertEquals(int x, int y) {
+   if (x == y) {
+      return true;
+   } else {
+      return false;
+   }
+}
   
   JeepneyTrip(double distance, int totalPassengers, int discountPassengers) {
     this.distance = distance;
@@ -39,3 +45,5 @@ class JeepneyTrip {
     return payment - totalFare(totalPassengers, discountPassengers, distance);
   }
 }
+
+  
